@@ -192,7 +192,7 @@ public class CustomPlane : MonoBehaviour
 
     public void Download()
     {
-        var fileName = string.Format("plane-{0}x{1} ({2}x{3}).obj", width, height, cols, rows);
+        var fileName = string.Format("plane-{0}x{1} ({2}/{3}).obj", width, height, cols, rows);
         BrowserTextDownload(fileName, ToText(m_OriginalMesh, 0));
     }
 
