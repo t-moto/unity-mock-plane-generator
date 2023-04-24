@@ -62,7 +62,7 @@ public class CustomPlane : MonoBehaviour
         width = m_WidthInput.value;
         height = m_HeightInput.value;
 
-        m_Camera.orthographicSize = Mathf.Max(1, m_Camera.orthographicSize - Input.mouseScrollDelta.y * .5f);
+        m_Camera.orthographicSize = Mathf.Max(.1f, m_Camera.orthographicSize - Input.mouseScrollDelta.y * .5f);
         
         var hash = string.Format("{0}:{1}:{2}:{3}", cols, rows, width, height);
         if (hash == m_Hash)
