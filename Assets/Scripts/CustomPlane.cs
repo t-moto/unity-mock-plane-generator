@@ -4,11 +4,11 @@
 // (c) 2018 hirayama takashi. (c) 2018 KAYAC Inc.
 
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.InteropServices;
+using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
 [ExecuteInEditMode]
@@ -62,7 +62,7 @@ public class CustomPlane : MonoBehaviour
         width = m_WidthInput.value;
         height = m_HeightInput.value;
 
-        m_Camera.orthographicSize = Mathf.Max(1, m_Camera.orthographicSize - Input.mouseScrollDelta.y);
+        m_Camera.orthographicSize = Mathf.Max(1, m_Camera.orthographicSize - Input.mouseScrollDelta.y * .5f);
         
         var hash = string.Format("{0}:{1}:{2}:{3}", cols, rows, width, height);
         if (hash == m_Hash)
@@ -192,7 +192,7 @@ public class CustomPlane : MonoBehaviour
 
     public void Download()
     {
-        var fileName = string.Format("plane-{0}x{1} ({2}x{3})", width, height, cols, rows);
+        var fileName = string.Format("plane-{0}x{1} ({2}x{3}).obj", width, height, cols, rows);
         BrowserTextDownload(fileName, ToText(m_OriginalMesh, 0));
     }
 
